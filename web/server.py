@@ -3,7 +3,7 @@ from database import connector
 from model import entities
 import json
 import time
-
+import math
 db = connector.Manager()
 engine = db.createEngine()
 
@@ -13,6 +13,26 @@ app = Flask(__name__)
 @app.route('/static/<content>')
 def static_content(content):
     return render_template(content)
+
+@app.route('/palindromo/<content>')
+def palindromo(content): 
+    return str(str(content) == ''.join(reversed((content))))
+
+
+@app.route('/multiplo/<content1>/<content2>')
+def multiplo(content1,content2): 
+    maximo=max(int(content1),int(content2))
+    minimo=min(int(content1),int(content2))
+    while(minimo!=0):
+        res = minimo
+        minimo= maximo%minimo
+        maximo = res
+    return "NO lo son" if res==1 else "Si lo son"
+     
+
+
+    return str(str(content) == ''.join(reversed((content))))
+
 
 
 
