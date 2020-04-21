@@ -23,11 +23,7 @@ def palindromo(content):
 def multiplo(content1,content2): 
     maximo=max(int(content1),int(content2))
     minimo=min(int(content1),int(content2))
-    while(minimo!=0):
-        res = minimo
-        minimo= maximo%minimo
-        maximo = res
-    return "NO lo son" if res==1 else "Si lo son"
+    return "NO lo son" if maximo%minimo!=0 else "Si lo son"
      
 
 
